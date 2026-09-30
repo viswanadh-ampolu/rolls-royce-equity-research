@@ -1,0 +1,255 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Rolls-Royce Company Overview</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+/* Layout: research-note column with sticky section nav; data panels sit beside the prose on wide screens */
+:root{
+  --bg:#f5f6f8; --panel:#ffffff; --ink:#14202e; --muted:#5a6778; --line:#dde2e9;
+  --navy:#0e2a47; --steel:#4c77a6; --sky:#9fbbd8; --brass:#b3862f; --good:#2f7d55; --warn:#b5642a;
+  --hl:#fff1c2; --hlink:#6b4d00;
+  --display:"Source Serif 4",Georgia,serif; --body:"IBM Plex Sans",system-ui,sans-serif; --mono:"IBM Plex Mono",ui-monospace,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0d141c; --panel:#152130; --ink:#e6ebf2; --muted:#98a6b8; --line:#26364a;
+  --navy:#8fb3dc; --steel:#5f8fc4; --sky:#2e4c70; --brass:#d8a94e; --good:#5cc08b; --warn:#e08c52;
+  --hl:#3d3317; --hlink:#f3d27a; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0d141c; --panel:#152130; --ink:#e6ebf2; --muted:#98a6b8; --line:#26364a;
+  --navy:#8fb3dc; --steel:#5f8fc4; --sky:#2e4c70; --brass:#d8a94e; --good:#5cc08b; --warn:#e08c52;
+  --hl:#3d3317; --hlink:#f3d27a; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font:15px/1.6 var(--body);padding-inline:16px;padding-block:0 48px}
+.wrap{max-width:1120px;margin:0 auto}
+header.top{padding-block:36px 20px;border-bottom:2px solid var(--navy);display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;align-items:flex-end}
+.eyebrow{font:500 11px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--brass)}
+h1{font:600 clamp(28px,5vw,44px)/1.1 var(--display);margin:6px 0 4px;text-wrap:balance}
+.meta{font:12.5px var(--mono);color:var(--muted);text-align:right}
+.ticker{display:inline-flex;gap:8px;align-items:center;font:500 13px var(--mono);color:var(--muted)}
+.ticker b{background:var(--navy);color:var(--bg);padding:2px 7px;border-radius:3px}
+nav.sec{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);border-bottom:1px solid var(--line);display:flex;gap:4px;overflow-x:auto;padding-block:8px}
+nav.sec a{font:500 12.5px var(--body);color:var(--muted);text-decoration:none;padding:6px 10px;border-radius:4px;white-space:nowrap}
+nav.sec a:hover,nav.sec a.on{color:var(--ink);background:var(--panel)}
+nav.sec a:focus-visible,button:focus-visible{outline:2px solid var(--brass);outline-offset:2px}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-block:22px}
+.kpi{background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:14px 16px}
+.kpi .v{font:500 26px var(--mono);font-variant-numeric:tabular-nums;color:var(--navy)}
+.kpi .l{font-size:12.5px;color:var(--muted)}
+.kpi .d{font:500 12px var(--mono);color:var(--good)}
+section{padding-block:26px;border-bottom:1px solid var(--line);scroll-margin-top:56px}
+h2{font:600 24px/1.2 var(--display);margin:0 0 12px;text-wrap:balance}
+h3{font:600 15px var(--body);margin:0 0 6px}
+p{margin:0 0 12px;max-width:68ch}
+.two{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:24px;align-items:start}
+@media (max-width:820px){.two{grid-template-columns:1fr}}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:16px}
+.panel .cap{font:500 11px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+.chartbox{position:relative;height:260px}
+.hint{font-size:12px;color:var(--muted);margin-top:8px}
+.tabs{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px}
+.tabs button{font:500 13px var(--body);border:1px solid var(--line);background:var(--panel);color:var(--muted);padding:7px 12px;border-radius:999px;cursor:pointer}
+.tabs button[aria-selected="true"]{background:var(--navy);color:var(--bg);border-color:var(--navy)}
+.seg{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:20px}
+@media (max-width:700px){.seg{grid-template-columns:1fr}}
+.facts{display:grid;gap:0;font-size:13.5px}
+.facts div{display:flex;justify-content:space-between;gap:12px;padding:7px 0;border-bottom:1px solid var(--line)}
+.facts span:last-child{font:500 13px var(--mono);font-variant-numeric:tabular-nums;text-align:right}
+.pill{display:inline-block;font:500 11px var(--mono);padding:2px 8px;border-radius:999px;background:var(--sky);color:var(--ink);margin-right:4px}
+.ph{background:var(--hl);color:var(--hlink);padding:0 5px;border-radius:3px;font:500 12.5px var(--mono)}
+.drivers{display:grid;gap:10px}
+.drv{display:grid;grid-template-columns:28px minmax(0,1fr);gap:10px;background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:12px 14px}
+.drv .tag{font:500 11px var(--mono);width:28px;height:28px;border-radius:50%;display:grid;place-items:center;background:var(--navy);color:var(--bg)}
+.drv small{display:block;color:var(--muted);font-size:12.5px}
+.risk{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px}
+.risk .panel{border-top:3px solid var(--warn)}
+.sev{font:500 11px var(--mono);color:var(--warn);text-transform:uppercase;letter-spacing:.08em}
+details{background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:10px 14px;margin-top:10px}
+summary{cursor:pointer;font-weight:500}
+table{width:100%;border-collapse:collapse;font-size:13.5px}
+th,td{padding:7px 8px;border-bottom:1px solid var(--line);text-align:left}
+td.n,th.n{text-align:right;font-family:var(--mono);font-variant-numeric:tabular-nums}
+.tw{overflow-x:auto}
+footer{font-size:12px;color:var(--muted);padding-top:20px}
+footer a{color:var(--steel)}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+
+<div class="wrap">
+<header class="top">
+  <div>
+    <div class="eyebrow">Equity Research · Company Overview</div>
+    <h1>Rolls-Royce Holdings plc</h1>
+    <div class="ticker"><b>LSE: RR.</b> Aerospace &amp; Defence · Engines, Services &amp; Power</div>
+  </div>
+  <div class="meta">Analyst: Viswanadham Ampolu<br>WSO Equity Research Internship<br>Data to H1 2026 results · 30 Jul 2026</div>
+</header>
+
+<nav class="sec" aria-label="Sections">
+  <a href="#overview">Overview</a><a href="#segments">Segments</a><a href="#quality">Revenue quality</a>
+  <a href="#margins">Margins</a><a href="#outlook">Outlook</a><a href="#risks">Risks</a><a href="#sources">Sources</a>
+</nav>
+
+<div class="kpis">
+  <div class="kpi"><div class="l">FY2025 revenue</div><div class="v">£20.1bn</div><div class="d">3 segments + SMR</div></div>
+  <div class="kpi"><div class="l">H1 2026 underlying op. margin</div><div class="v">22.5%</div><div class="d">▲ 340bps y/y</div></div>
+  <div class="kpi"><div class="l">H1 2026 underlying op. profit</div><div class="v">£2.5bn</div><div class="d">▲ 46% y/y</div></div>
+  <div class="kpi"><div class="l">FY2026 op. profit guidance</div><div class="v">£4.7–4.9bn</div><div class="d">Raised at H1</div></div>
+  <div class="kpi"><div class="l">EV / EBIT</div><div class="v">~25x</div><div class="d">vs 5-yr avg 20.4x</div></div>
+</div>
+
+<section id="overview">
+  <div class="two">
+    <div>
+      <h2>Business overview</h2>
+      <p>Rolls-Royce designs, manufactures and services engines and power systems for commercial aircraft, armed forces and industry. The investment case rests on one fact: Rolls-Royce earns most of its profit from servicing its installed engine base for decades after delivery, not from selling engines.</p>
+      <p>Civil Aerospace is over half of revenue, so the company is best compared with aero-engine and aftermarket franchises such as GE Aerospace and Safran, not diversified industrials. Defence and Power Systems add growth that does not depend on the airline cycle.</p>
+      <p>The widebody engine market is a small oligopoly with very high barriers to entry. Sole-source status on the Airbus A350 and the UK's sovereign submarine reactor work give Rolls-Royce a franchise that is hard to replicate, and it gets stronger as services grow in the mix.</p>
+    </div>
+    <div class="panel">
+      <div class="cap">FY2025 revenue mix · £20.1bn</div>
+      <div class="chartbox"><canvas id="mix" aria-label="Revenue mix doughnut chart"></canvas></div>
+      <div class="hint">Hover or tap a slice for revenue and margin. Tap a slice to open that segment below.</div>
+    </div>
+  </div>
+</section>
+
+<section id="segments">
+  <h2>Segments</h2>
+  <div class="tabs" role="tablist" id="tabs"></div>
+  <div class="seg">
+    <div id="segText"></div>
+    <div class="panel"><div class="cap">Key figures</div><div class="facts" id="segFacts"></div></div>
+  </div>
+</section>
+
+<section id="quality">
+  <div class="two">
+    <div>
+      <h2>Revenue quality</h2>
+      <p>Civil revenue is largely recurring. An engine delivered today earns Long-Term Service Agreement (LTSA) income, paid per Engine Flying Hour (EFH), for 20+ years. Airlines cannot easily switch engine supplier once an aircraft is bought, which gives Rolls-Royce pricing power at contract renewal. Each new delivery adds to a long stream of future service revenue.</p>
+      <p>As services grew in the mix, earnings became more predictable, which supports a higher valuation multiple. EV/EBIT is now about 25x, above its 3-year average of 22.1x and 5-year average of 20.4x (Alpha Spread, Sep 2026). Before 2023, EBIT was too depressed for the multiple to be meaningful, so the re-rating reflects the market pricing in durable, service-led earnings. The limit is that, unlike software, servicing engines needs labour and parts, so costs rise with volume.</p>
+    </div>
+    <div class="panel">
+      <div class="cap">Civil Aerospace revenue split · FY2025</div>
+      <div class="chartbox" style="height:200px"><canvas id="civil" aria-label="Civil aftermarket vs original equipment"></canvas></div>
+      <div class="hint">About 69% (£7.2bn of £10.4bn) is aftermarket services.</div>
+    </div>
+  </div>
+</section>
+
+<section id="margins">
+  <h2>What drove the margin step-up</h2>
+  <div class="two">
+    <div>
+      <p>Group underlying operating margin rose 340bps, from 19.1% in H1 2025 to 22.5% in H1 2026, and operating profit grew 46% to £2.5bn. Management credits structural levers delivered under CEO Tufan Erginbilgiç, who joined in January 2023. The transformation is now in its fourth year, so the gains are not down to one person or one year.</p>
+      <div class="drivers">
+        <div class="drv"><div class="tag">A</div><div><b>Commercial optimisation</b><small>Contract renegotiation and higher LTSA pricing, about £574m of gross margin improvement.</small></div></div>
+        <div class="drv"><div class="tag">B</div><div><b>Time-on-wing and durability</b><small>Engines grounded for maintenance (aircraft-on-ground) effectively eliminated.</small></div></div>
+        <div class="drv"><div class="tag">C</div><div><b>Cost efficiency</b><small>Operational savings across the group.</small></div></div>
+        <div class="drv"><div class="tag">D</div><div><b>Aftermarket volume</b><small>Large-engine flying hours +4%, maintenance, repair and overhaul (MRO) output +13%.</small></div></div>
+      </div>
+      <p style="margin-top:12px"><b>Why it matters:</b> repricing (A) is partly a one-off step, while durability and volume (B, D) recur. How sustainable the new margin level proves will be a key driver of the valuation.</p>
+    </div>
+    <div class="panel">
+      <div class="cap">Underlying operating margin by segment</div>
+      <div class="chartbox" style="height:300px"><canvas id="marg" aria-label="Margin comparison bar chart"></canvas></div>
+      <div class="hint">FY2025 vs H1 2026. Hover a bar for the change in basis points.</div>
+    </div>
+  </div>
+</section>
+
+<section id="outlook">
+  <h2>Outlook &amp; guidance</h2>
+  <div class="two">
+    <div>
+      <p>FY2026 guidance was raised to £4.7–4.9bn underlying operating profit and £3.8–4.0bn free cash flow. Management cited strong first-half execution across all divisions (H1 free cash flow of £2.0bn, up 24%) and continued transformation benefits, which outweighed the impact of the Middle East conflict.</p>
+      <p>Power Systems raised its target for power-generation original-equipment revenue growth to 2030 from 20% to 25% a year because of data-centre demand, and it is adding capacity at Aiken (South Carolina) and Mankato (Minnesota).</p>
+    </div>
+    <div class="panel">
+      <div class="cap">FY2026 guidance ranges (£bn)</div>
+      <div class="chartbox" style="height:180px"><canvas id="guid" aria-label="Guidance range chart"></canvas></div>
+    </div>
+  </div>
+</section>
+
+<section id="risks">
+  <h2>Key risks</h2>
+  <div class="risk">
+    <div class="panel"><div class="sev">High</div><h3>Air-travel shocks</h3><p style="font-size:13.5px;margin:0">Civil revenue depends on flying hours. COVID showed how fast they can collapse.</p></div>
+    <div class="panel"><div class="sev">Medium</div><h3>Supply chain</h3><p style="font-size:13.5px;margin:0">2025 engine deliveries fell 9% to 259, slowing growth in the installed base.</p></div>
+    <div class="panel"><div class="sev">Medium</div><h3>Margin sustainability</h3><p style="font-size:13.5px;margin:0">Part of the recent margin gain comes from one-off contract repricing.</p></div>
+    <div class="panel"><div class="sev">Medium</div><h3>SMR execution</h3><p style="font-size:13.5px;margin:0">Nuclear new-build carries high cost and timeline risk.</p></div>
+  </div>
+  <details><summary>Glossary</summary>
+    <div class="tw"><table>
+      <tr><td>LTSA</td><td>Long-Term Service Agreement</td></tr><tr><td>EFH</td><td>Engine Flying Hours</td></tr>
+      <tr><td>MRO</td><td>Maintenance, Repair &amp; Overhaul</td></tr><tr><td>mtu</td><td>Motoren- und Turbinen-Union (Power Systems brand)</td></tr>
+      <tr><td>SMR</td><td>Small Modular Reactor</td></tr><tr><td>GWe</td><td>Gigawatts of electrical output</td></tr>
+      <tr><td>OE</td><td>Original Equipment (new units, as opposed to aftermarket)</td></tr>
+    </table></div>
+  </details>
+</section>
+
+<footer id="sources">
+  <p><b>Sources:</b> <a href="https://www.rolls-royce.com/media/press-releases/2026/26-02-2026-rr-holdings-plc-2025-full-year-results.aspx">Rolls-Royce 2025 Full Year Results</a> · <a href="https://www.rolls-royce.com/media/press-releases/2026/30-07-2026-rr-holdings-plc-2026-half-year-results.aspx">2026 Half Year Results</a> · <a href="https://www.investing.com/news/transcripts/earnings-call-transcript-rollsroyce-lifts-h1-2026-outlook-on-profit-surge-93CH-4823055">H1 2026 earnings call</a> · <a href="https://www.mtu-solutions.com/na/en/pressreleases/2026/Strong-results-and-record-investments-Rolls-Royce-Power-Systems-continues-on-growth-path.html">Power Systems FY2025</a> · <a href="https://www.gov.uk/government/news/great-british-energy-nuclear-and-rolls-royce-smr-sign-contract">GOV.UK: GBE-N and Rolls-Royce SMR contract</a></p>
+  <p>Valuation multiples: <a href="https://www.alphaspread.com/security/lse/rr/relative-valuation/ratio/enterprise-value-to-ebit">Alpha Spread</a>; SMR funding: <a href="https://www.ans.org/news/2026-04-15/article-7937/rollsroyce-gben-contract-kickstarts-uks-smr-plans-for-wylfa-site/">ANS Nuclear Newswire</a>. Segment revenue shares are approximate. Prepared for educational purposes as part of the WSO Equity Research Internship. This is not investment advice.</p>
+</footer>
+</div>
+
+<script>
+const SEG=[
+ {k:"civil",name:"Civil Aerospace",share:52,rev:"~£10.4bn",m25:20.5,m26:25.3,
+  text:`<h3>Civil Aerospace · ~52% of revenue</h3><p>Trent engines for widebody aircraft, including the Airbus A350 (sole engine supplier) and Boeing 787. About 69% of segment revenue (£7.2bn) is aftermarket services, mostly under LTSAs paid per Engine Flying Hour.</p><p><span class="pill">Recurring</span><span class="pill">Sole-source A350</span></p>`,
+  facts:[["FY2025 revenue","~£10.4bn"],["Aftermarket share","~69% (£7.2bn)"],["Margin FY25 → H1 26","20.5% → 25.3%"],["Large-engine flying hours H1 26","+4%"],["Large-engine MRO output H1 26","+13%"],["Engine deliveries 2025","259 (−9%)"]]},
+ {k:"def",name:"Defence",share:24,rev:"~£4.8bn",m25:14.4,m26:21.0,
+  text:`<h3>Defence · ~24% of revenue</h3><p>Military aero engines and the nuclear propulsion reactors for the Royal Navy's submarine fleet. A £17.4bn order backlog gives multi-year visibility, and sovereign nuclear propulsion faces no realistic competitor.</p><p><span class="pill">Government-backed</span><span class="pill">Long-dated</span></p>`,
+  facts:[["FY2025 revenue","~£4.8bn"],["Order backlog","£17.4bn"],["Margin FY25 → H1 26","14.4% → 21.0%"]]},
+ {k:"ps",name:"Power Systems",share:24,rev:"~£4.8bn",m25:17.4,m26:20.3,
+  text:`<h3>Power Systems · ~24% of revenue</h3><p>Engines and generator sets under the mtu (Motoren- und Turbinen-Union) brand. The main growth product is diesel and fast-start gas generator sets that supply backup and prime power to hyperscale and colocation data centres.</p><p><span class="pill">Data-centre growth</span><span class="pill">Capacity expansion</span></p>`,
+  facts:[["FY2025 revenue","€5.72bn (+19%)"],["FY2025 order intake","€7.14bn (+21%)"],["Margin FY25 → H1 26","17.4% → 20.3%"],["Power-gen OE growth target to 2030","25% a year (from 20%)"]]},
+ {k:"smr",name:"SMR (New Markets)",share:0,rev:"Pre-revenue",m25:null,m26:null,
+  text:`<h3>Rolls-Royce SMR · pre-revenue</h3><p>In April 2026 Great British Energy – Nuclear contracted the first three Small Modular Reactor units at Wylfa (at least 1.4 GWe, about 3 million homes). Backed by £2.6bn of Spending Review funding and up to £599m from the National Wealth Fund. Pipeline: up to six units in Czechia with ČEZ, plus a win in Sweden.</p><p>Rolls-Royce has not disclosed a contract value. The committed public capital is £3.2bn (£2.6bn plus up to £599m), which is the best available floor for the programme. Treated as upside, not part of the base case.</p>`,
+  facts:[["First contract","3 units, Wylfa (UK)"],["Capacity","≥1.4 GWe"],["Government funding","£2.6bn"],["National Wealth Fund","up to £599m"],["Committed public capital","~£3.2bn"],["Pipeline","Czechia (≤6), Sweden"]]}
+];
+const css=n=>getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+let charts=[];
+function setSeg(i){
+  document.querySelectorAll('#tabs button').forEach((b,j)=>b.setAttribute('aria-selected',i===j));
+  const s=SEG[i];document.getElementById('segText').innerHTML=s.text;
+  document.getElementById('segFacts').innerHTML=s.facts.map(f=>`<div><span>${f[0]}</span><span>${f[1]}</span></div>`).join('');
+}
+SEG.forEach((s,i)=>{const b=document.createElement('button');b.role='tab';b.textContent=s.name;b.onclick=()=>setSeg(i);document.getElementById('tabs').appendChild(b)});
+setSeg(0);
+
+function build(){
+  charts.forEach(c=>c.destroy());charts=[];
+  if(!window.Chart)return;
+  const ink=css('--ink'),mut=css('--muted'),line=css('--line'),cols=[css('--navy'),css('--steel'),css('--sky')];
+  Chart.defaults.font.family=css('--body');Chart.defaults.color=mut;
+  const tip={backgroundColor:css('--panel'),titleColor:ink,bodyColor:ink,borderColor:line,borderWidth:1,padding:10};
+  const main=SEG.slice(0,3);
+  charts.push(new Chart(mix,{type:'doughnut',data:{labels:main.map(s=>s.name),datasets:[{data:main.map(s=>s.share),backgroundColor:cols,borderColor:css('--panel'),borderWidth:3,hoverOffset:12}]},
+    options:{maintainAspectRatio:false,cutout:'58%',plugins:{legend:{position:'bottom',labels:{color:ink,boxWidth:12}},
+      tooltip:{...tip,callbacks:{label:c=>{const s=main[c.dataIndex];return[` ${s.share}% of revenue · ${s.rev}`,` Margin H1 26: ${s.m26}%`]}}}},
+      onClick:(e,el)=>{if(el.length){setSeg(el[0].index);document.getElementById('segments').scrollIntoView({behavior:'smooth'})}}}}));
+  charts.push(new Chart(civil,{type:'doughnut',data:{labels:['Aftermarket services','Original equipment & other'],datasets:[{data:[7.2,3.2],backgroundColor:[cols[0],cols[2]],borderColor:css('--panel'),borderWidth:3,hoverOffset:8}]},
+    options:{maintainAspectRatio:false,cutout:'62%',plugins:{legend:{position:'right',labels:{color:ink,boxWidth:12}},tooltip:{...tip,callbacks:{label:c=>` £${c.raw}bn · ${Math.round(c.raw/10.4*100)}%`}}}}}));
+  const ms=[...main,{name:'Group',m25:17.3,m26:22.5}];
+  charts.push(new Chart(marg,{type:'bar',data:{labels:ms.map(s=>s.name),datasets:[{label:'FY2025',data:ms.map(s=>s.m25),backgroundColor:cols[2]},{label:'H1 2026',data:ms.map(s=>s.m26),backgroundColor:cols[0]}]},
+    options:{maintainAspectRatio:false,scales:{y:{beginAtZero:true,max:30,ticks:{callback:v=>v+'%'},grid:{color:line}},x:{grid:{display:false},ticks:{color:ink}}},
+      plugins:{legend:{labels:{color:ink,boxWidth:12}},tooltip:{...tip,callbacks:{label:c=>` ${c.dataset.label}: ${c.raw}%`,footer:it=>{const s=ms[it[0].dataIndex];return `Change: +${Math.round((s.m26-s.m25)*100)}bps`}}}}}}));
+  charts.push(new Chart(guid,{type:'bar',data:{labels:['Underlying op. profit','Free cash flow'],datasets:[{label:'Range',data:[[4.7,4.9],[3.8,4.0]],backgroundColor:css('--brass'),borderRadius:4,barThickness:22}]},
+    options:{indexAxis:'y',maintainAspectRatio:false,scales:{x:{min:3,max:5.5,ticks:{callback:v=>'£'+v+'bn'},grid:{color:line}},y:{grid:{display:false},ticks:{color:ink}}},
+      plugins:{legend:{display:false},tooltip:{...tip,callbacks:{label:c=>` £${c.raw[0]}–${c.raw[1]}bn`}}}}}));
+}
+build();
+matchMedia('(prefers-color-scheme: dark)').addEventListener('change',build);
+new MutationObserver(build).observe(document.documentElement,{attributes:true,attributeFilter:['data-theme']});
+
+const links=[...document.querySelectorAll('nav.sec a')];
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)links.forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+e.target.id))}),{rootMargin:'-40% 0px -55% 0px'});
+document.querySelectorAll('section,footer').forEach(s=>io.observe(s));
+</script>
+
+</body></html>
